@@ -7,11 +7,11 @@ server{
     location /api {
         # 注意这里不需要添加 Access-Control-Allow-Origin 和 Access-Control-Allow-Methods 
         # 程序中已经添加
-	    # add_header Access-Control-Allow-Origin *;
-    	# add_header Access-Control-Allow-Methods 'GET, POST, OPTIONS';
+        # add_header Access-Control-Allow-Origin *;
+        # add_header Access-Control-Allow-Methods 'GET, POST, OPTIONS';
     	add_header Access-Control-Allow-Headers 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization';
 
-        proxy_pass http://127.0.0.1:xxx; # todo: 修改为对应端口 
+        proxy_pass http://127.0.0.1:12555;
         proxy_redirect off;
         proxy_set_header Host               $host;
         proxy_set_header X-Real-IP          $remote_addr;
