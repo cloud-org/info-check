@@ -1,0 +1,9 @@
+.idea/
+.vscode/
+
+*.xlsx
+info-go
+info.json
+info-go.exe
+
+go.sum
