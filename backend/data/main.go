@@ -3,16 +3,17 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/xuri/excelize/v2"
 	"info-go/server"
 	"log"
 	"os"
+
+	"github.com/xuri/excelize/v2"
 )
 
 func main() {
 	data := getData()
 	// 写入 json
-	filePtr, err := os.Create("/home/ashing/Documents/info-go/data/info.json")
+	filePtr, err := os.Create("info.json")
 	if err != nil {
 		fmt.Println("文件创建失败", err.Error())
 		return
@@ -29,7 +30,7 @@ func main() {
 }
 
 func getData() []server.PersonInfo {
-	f, err := excelize.OpenFile("/home/ashing/Documents/info-go/data/data.xlsx")
+	f, err := excelize.OpenFile("data.xlsx")
 	if err != nil {
 		fmt.Println(err)
 		return nil

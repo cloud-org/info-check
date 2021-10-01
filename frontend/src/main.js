@@ -11,8 +11,7 @@ Vue.use(Field);
 Vue.use(Button);
 Vue.config.productionTip = false
 
-// const url = "http://127.0.0.1:12555"
-const url = "http://info-check.ronething.com"
+const url = "http://127.0.0.1:12555"
 
 Vue.prototype.$url = url
 Vue.prototype.$axios = axios

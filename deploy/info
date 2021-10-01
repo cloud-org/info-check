@@ -1,0 +1,26 @@
+server{
+    listen 80;
+    server_name xxx.com; # todo: 修改为对应域名
+    access_log /var/log/nginx/info_access.log;
+    error_log /var/log/nginx/info_error.log;
+
+    location /api {
+        # 注意这里不需要添加 Access-Control-Allow-Origin 和 Access-Control-Allow-Methods 
+        # 程序中已经添加
+	    # add_header Access-Control-Allow-Origin *;
+    	# add_header Access-Control-Allow-Methods 'GET, POST, OPTIONS';
+    	add_header Access-Control-Allow-Headers 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization';
+
+        proxy_pass http://127.0.0.1:xxx; # todo: 修改为对应端口 
+        proxy_redirect off;
+        proxy_set_header Host               $host;
+        proxy_set_header X-Real-IP          $remote_addr;
+        proxy_set_header X-Forwarded-For    $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto  $scheme; 
+    }
+
+    location / {
+	root /home/xxxx/dist; # todo: 修改为对应前端 dist 目录
+    }
+
+}
