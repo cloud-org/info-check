@@ -43,6 +43,13 @@
         placeholder="酒店房间"
         readonly
       ></van-field>
+      <van-field
+          v-model="amount"
+          name="amount"
+          label="团费补交金额"
+          placeholder="团费补交金额"
+          readonly
+      ></van-field>
     </div>
 
     <div style="margin: 16px;" v-if="family">
@@ -99,6 +106,13 @@
         placeholder="酒店房间"
         readonly
       ></van-field>
+      <van-field
+          v-model="val.amount"
+          name="amount"
+          label="团费补交金额"
+          placeholder="团费补交金额"
+          readonly
+      ></van-field>
     </div>
   </van-form>
 </template>
@@ -117,6 +131,7 @@ export default {
       comment: "",
       room: "",
       name: "",
+      amount: "",
       family: false,
       showUser: true,
       familyList: []

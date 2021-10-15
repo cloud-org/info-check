@@ -13,6 +13,7 @@ type PersonInfo struct {
 	Phone    string `json:"phone"`
 	Comment  string `json:"comment"`
 	Room     string `json:"room"`
+	Amount   string `json:"amount"`
 	FamilyId string `json:"familyId"`
 }
 
@@ -30,7 +31,6 @@ func NewInfo(personInfos []PersonInfo) *Info {
 	return &Info{PersonInfos: personInfos}
 }
 
-
 type PersonResp struct {
 	Name    string `json:"name"`
 	Gender  string `json:"gender"`
@@ -38,6 +38,7 @@ type PersonResp struct {
 	Phone   string `json:"phone"`
 	Comment string `json:"comment"`
 	Room    string `json:"room"`
+	Amount  string `json:"amount"`
 	Family  bool   `json:"family"`
 }
 
@@ -47,6 +48,7 @@ type FamilyInfoResp struct {
 	Id      string `json:"id"` // 身份证号码
 	Phone   string `json:"phone"`
 	Comment string `json:"comment"`
+	Amount  string `json:"amount"`
 	Room    string `json:"room"`
 }
 
@@ -85,6 +87,7 @@ func (info *Info) checkPerson(code string, name string) (*PersonResp, error) {
 				Phone:   single.Phone,
 				Comment: single.Comment,
 				Room:    single.Room,
+				Amount:  single.Amount,
 			}
 			if single.FamilyId != "" { // todo: list
 				personResp.Family = true
@@ -111,6 +114,7 @@ func (info *Info) checkFamily(code string) ([]FamilyInfoResp, error) {
 						Phone:   data.Phone,
 						Comment: data.Comment,
 						Room:    data.Room,
+						Amount:  data.Amount,
 					})
 				}
 			}

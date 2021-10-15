@@ -3,11 +3,11 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/xuri/excelize/v2"
 	"info-go/server"
 	"log"
 	"os"
-
-	"github.com/xuri/excelize/v2"
+	"strings"
 )
 
 func main() {
@@ -37,17 +37,17 @@ func getData() []server.PersonInfo {
 	}
 
 	res := make([]server.PersonInfo, 0)
-	cellList := []string{"B", "C", "D", "E", "F"}
-	for index := 3; index <= 24; index++ {
+	cellList := []string{"B", "C", "D", "E", "F", "G", "H", "I"}
+	for index := 2; index <= 25; index++ {
 		onePerson := make([]string, len(cellList))
 		for cellIndex, cell := range cellList {
-			value, err := f.GetCellValue("Sheet1", fmt.Sprintf("%s%d", cell, index))
+			value, err := f.GetCellValue("Sheet2", fmt.Sprintf("%s%d", cell, index))
 			if err != nil {
 				log.Println("获取值发生错误,", err)
 				value = ""
 			}
 			//fmt.Println("value is ", value)
-			onePerson[cellIndex] = value
+			onePerson[cellIndex] = strings.TrimSpace(value)
 		}
 		res = append(res, server.PersonInfo{
 			Name:     onePerson[0],
@@ -55,8 +55,9 @@ func getData() []server.PersonInfo {
 			Id:       onePerson[2],
 			Phone:    onePerson[3],
 			Comment:  onePerson[4],
-			Room:     "",
-			FamilyId: "",
+			Room:     onePerson[5],
+			Amount:   onePerson[6],
+			FamilyId: onePerson[7],
 		})
 	}
 
